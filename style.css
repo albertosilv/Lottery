@@ -79,6 +79,24 @@ body{
         border-radius: 60%;
         font-weight: 800;
 }
+.button-class{
+    border: #27C383 solid 1px;
+    padding:10px 15px 10px 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    color:#27C383;
+    font-style: italic;
+    margin-right: 10px; 
+}
+.button-submit{
+    border: #27C383 solid 2px;
+    padding:10px 15px 10px 15px;
+    background-color: #27C383;
+    border-radius: 15px;
+    color:#fff;
+    font-style: italic;
+    margin-right: 10px;
+}
 .title-card{
     font-size: 18px;
     color:#707070dc;
