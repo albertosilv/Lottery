@@ -25,12 +25,47 @@ body{
     font-weight: 500;
 }
 
+.game{
+    margin-left: 9vw;
+}
 .text{
     font-size: 18px;
     color:#707070dc;
     letter-spacing:2px;
     font-style: italic;
-    margin-left: 9vw;
+}
+.text-sub{
+    color:#707070dc;
+    margin-top: 3vh;
+    letter-spacing:1px;
+    font-weight: 600;
+}
+.button-loto{
+    border: #7F3992 solid 2px;
+    padding:5px 15px 5px 15px;
+    background-color: #fff;
+    border-radius: 15px;
+    color:#7F3992;
+    font-style: italic;
+    margin-right: 10px;
+}
+.button-mega{
+    border: #01AC66 solid 2px;
+    padding:5px 15px 5px 15px;
+    background-color: #01AC66;
+    border-radius: 15px;
+    color:#fff;
+    font-style: italic;
+    margin-right: 10px;
+}
+.button-mania{
+    border: #F79F38 solid 2px;
+    padding:5px 15px 5px 15px;
+    background-color: #fff;
+    border-radius: 15px;
+    color:#F79F38;
+    font-style: italic;
+    margin-right: 10px;
 }
 .title-card{
     font-size: 18px;
