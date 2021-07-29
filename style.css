@@ -1,0 +1,26 @@
+body{
+    background-color: #F7F7F7!important;
+    width:99%;
+    height: 500px;
+}
+.header{
+    border-bottom: 1px #9a9a9a94 solid;
+    height: 15%;
+}
+.text-title,.text-title:hover{
+    color:#707070;
+    text-decoration: none;
+    font-size: 40px;
+    font-weight: 700;
+    border-bottom: #C3CF37 7px solid;
+    border-radius: 5px;
+    margin:40px 40px 40px 0px;
+    letter-spacing:2px
+}
+.text-header,.text-header:hover{
+    color:#9A9A9A;
+    text-decoration: none;
+    font-size: 20px;
+    margin:10px 10px 10px 0px;
+    font-weight: 500;
+}
