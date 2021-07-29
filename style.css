@@ -106,7 +106,56 @@ body{
 .icon{
     color:#B3B3B3;
 }
-.card-games{
+.card-games-loto{
     border-left: 3px #7F3992 solid;
     border-radius: 2px;
 }
+.card-games-mega{
+    border-left: 3px #01AC66 solid;
+    border-radius: 2px;
+}
+.card-games-mania{
+    border-left: 3px #F79F38 solid;
+    border-radius: 2px;
+}
+.text-card-loto,.text-card-mega,.text-card-mania{
+    font-size: 14px;   
+    letter-spacing:2px;
+    font-weight: 700;
+    font-style: italic;
+}
+.text-card-loto{
+    color:#7F3992;
+}
+.text-card-mania{
+    color:#F79F38;
+}
+.text-card-mega{
+    color:#01AC66;
+}
+.save-container{
+    width: 100%;
+    height: 10vh;
+    background-color: #F7F7F7;
+    margin-top: 5px;
+    border-top: 1px solid #b3b3b38c;
+}
+.save{
+    color:#01AC66;
+    border:none;
+    outline: 0;
+    background-color: #F7F7F7;
+    width: 100%;
+    height: 100%;
+    font-size: 25px;
+    font-weight: 700;
+    font-style: italic;
+}
+@media(max-width: 600px) {
+    .button-number {
+      margin:5px 0px;
+    }
+    .game{
+        margin-left: 5vw;
+    }
+  }
