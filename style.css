@@ -79,6 +79,18 @@ body{
         border-radius: 60%;
         font-weight: 800;
 }
+.button-number-selection{
+    color: #fff;
+    border: none;
+    background-color: #819da3;
+    padding: 25px 30px 25px 30px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    margin: 5px 0px 5px 8px;
+    border-radius: 60%;
+    font-weight: 800;
+}
 .button-class{
     border: #27C383 solid 1px;
     padding:10px 15px 10px 15px;
@@ -102,6 +114,11 @@ body{
     color:#707070dc;
     letter-spacing:1px;
     font-style: italic;
+}
+.button-delete{
+    border: none;
+    outline: none;
+    background-color: #fff;
 }
 .icon{
     color:#B3B3B3;
