@@ -1,13 +1,13 @@
 (function (win, doc) {
 
     const app = (function () {
-        let game;
+        let typeGame;
         let games;
         const cars = []
         const gamesNumber={
-            lotofacil:[],
-            megasena:[],
-            quina:[]
+            'Lotofácil':[],
+            'Mega-Sena':[],
+            'Quina':[]
         }
         const ajax = new XMLHttpRequest();
         let rules;
@@ -33,11 +33,15 @@
 
                 const buttonFacil = doc.getElementById('button-facil')
                 const buttonMega = doc.getElementById('button-mega')
-                const buttonMania = doc.getElementById('button-mania')
+                const buttonMania = doc.getElementById('button-mania') 
+                const buttonClear = doc.getElementById('clear-game')
+                const buttonComplete = doc.getElementById('complete-game')
 
                 buttonFacil.addEventListener('click', this.handleGame)
                 buttonMega.addEventListener('click', this.handleGame)
                 buttonMania.addEventListener('click', this.handleGame)
+                buttonClear.addEventListener('click', this.clearGame)
+                buttonComplete.addEventListener('click', this.completeGame)
 
             },
             handleGame: function handleGame(e) {
@@ -61,10 +65,10 @@
                 const game = rules.filter(e=>{
                     return e.type===type
                 })[0]
+                typeGame=game;
                 const containerNumbers = doc.getElementById('container-numbers')
                 containerNumbers.innerHTML=''
                 for(let i=0;i<game.range;i++){
-                    
                     containerNumbers.appendChild(app.generateNumberButton(i<9?`0${i+1}`:i+1))
                 }
             },
@@ -72,15 +76,42 @@
                 const $button = doc.createElement('button')
                 const $text=doc.createTextNode(number)
                 $button.setAttribute('class','button-number')
+                $button.setAttribute('id',number)
                 $button.addEventListener('click',()=>{
+                    gamesNumber[`${typeGame.type}`].push(String(number))
                     $button.removeAttribute('class','button-number')
-                    $button.setAttribute('class','.button-number-selection')
+                    $button.setAttribute('class','button-number-selection')
                 })
                 $button.append($text)
+                console.log($button)
                 return $button
             },
-            clickNumber: function clickNumber(e){
-                
+            clearGame: function clearGame(){
+                const buttons = document.querySelectorAll('#container-numbers .button-number-selection');
+                buttons.forEach(e=>{
+                    e.removeAttribute('class','button-number-selection')
+                    e.setAttribute('class','button-number')
+                })
+                gamesNumber[typeGame.type]=[]
+            },
+            completeGame: function completeGame(){
+                const length = typeGame['max-number']-gamesNumber[typeGame.type].length
+                let cont=0
+                while(true){
+                    const num =  Math.round(Math.random() * 100)
+                    console.log(num)
+                    const button = doc.getElementById(num>9?num:`0${num}`)
+                    if(!button){
+                        continue
+                    }
+                    if(!button.classList.contains('button-number-selection')){
+                        gamesNumber[typeGame.type].push(String(num))
+                        button.removeAttribute('class','button-number')
+                        button.setAttribute('class','button-number-selection')
+                        cont++;
+                    }
+                    if(cont>=length) break;
+                }
             }
         }
     })()
