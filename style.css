@@ -122,18 +122,9 @@ body{
 }
 .icon{
     color:#B3B3B3;
-}
-.card-games-loto{
-    border-left: 3px #7F3992 solid;
-    border-radius: 2px;
-}
-.card-games-mega{
-    border-left: 3px #01AC66 solid;
-    border-radius: 2px;
-}
-.card-games-mania{
-    border-left: 3px #F79F38 solid;
-    border-radius: 2px;
+    width: 25px;
+    height: 25px;
+    
 }
 .text-card-loto,.text-card-mega,.text-card-mania{
     font-size: 14px;   
