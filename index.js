@@ -71,11 +71,19 @@
                     return e.type === type
                 })[0]
                 typeGame = game;
+                this.descriptionGame(type)
                 const containerNumbers = doc.getElementById('container-numbers')
                 containerNumbers.innerHTML = ''
-                for (let i = 0; i < game.range; i++) {
-                    containerNumbers.appendChild(app.generateNumberButton(i < 9 ? `0${i + 1}` : i + 1))
+                for (let i = 1; i <= game.range; i++) {
+                    containerNumbers.appendChild(app.generateNumberButton(i < 10 ? `0${i}` : i))
                 }
+            },
+            descriptionGame: function descriptionGame(type){
+                const $description = doc.getElementById('description')
+                $description.innerHTML=''
+                console.log($description)
+                $description.append(doc.createTextNode(typeGame.description))
+                $description.setAttribute('style','color:#887979dc')
             },
             generateNumberButton: function generateNumberButton(number) {
                 const $button = doc.createElement('button')
@@ -106,12 +114,12 @@
                 let cont = 0
                 while (true) {
                     const num = Math.round(Math.random() * 100)
-                    const button = doc.getElementById(num > 9 ? num : `0${num}`)
+                    const button = doc.getElementById(num > 10 ? num : `0${num}`)
                     if (!button) {
                         continue
                     }
                     if (!button.classList.contains('button-number-selection')) {
-                        gamesNumber[typeGame.type].push(String(num))
+                        gamesNumber[typeGame.type].push(String(button.id))
                         button.removeAttribute('class', 'button-number')
                         button.setAttribute('class', 'button-number-selection')
                         cont++;
@@ -161,9 +169,11 @@
 
                 $type.append(doc.createTextNode(`${typeGame.type}`))
                 $text.appendChild($type)
-                $text.append(doc.createTextNode(` R$${typeGame.price}`))
-                const text = doc.createTextNode(gamesNumber[typeGame.type].toString())
+                $text.append(doc.createTextNode(` R$ ${typeGame.price.toFixed(2)}`))
+                $text.setAttribute('style','color:#887979dc')
+                const text = doc.createTextNode(gamesNumber[typeGame.type].sort().toString())
                 $textNumber.append(text)
+                $textNumber.setAttribute('style','color:#887979dc')
 
                 $containerText.appendChild($textNumber)
                 $containerText.appendChild($text)
@@ -178,7 +188,6 @@
                 contGame++;
             },
             removeCartGame:function removeCartGame(element){
-                console.log('hi')
                 const cart = doc.getElementById('cart')
                 const game = element.id.split('-')[1]
                 cart.removeChild(element);
@@ -189,8 +198,8 @@
                 amountComponente.innerHTML = ''
                 const strong = doc.createElement('strong')
                 strong.setAttribute('class', 'title-card')
-                strong.append(doc.createTextNode(`CART`))
-                const text = doc.createTextNode(`Total: R$ ${amount}`)
+                strong.append(doc.createTextNode(`CART `))
+                const text = doc.createTextNode(`Total: R$ ${amount.toFixed(2)}`)
                 amountComponente.appendChild(strong)
                 amountComponente.append(text)
                 this.clearGame()
