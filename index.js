@@ -2,7 +2,6 @@
 
     const app = (function () {
         let typeGame;
-        const cars = []
         let amount = 0
         const gamesNumber = {
             'Lotofácil': [],
@@ -71,17 +70,16 @@
                     return e.type === type
                 })[0]
                 typeGame = game;
-                this.descriptionGame(type)
+                this.descriptionGame()
                 const containerNumbers = doc.getElementById('container-numbers')
                 containerNumbers.innerHTML = ''
                 for (let i = 1; i <= game.range; i++) {
                     containerNumbers.appendChild(app.generateNumberButton(i < 10 ? `0${i}` : i))
                 }
             },
-            descriptionGame: function descriptionGame(type){
+            descriptionGame: function descriptionGame(){
                 const $description = doc.getElementById('description')
                 $description.innerHTML=''
-                console.log($description)
                 $description.append(doc.createTextNode(typeGame.description))
                 $description.setAttribute('style','color:#887979dc')
             },
@@ -102,7 +100,7 @@
                 return $button
             },
             clearGame: function clearGame() {
-                const buttons = document.querySelectorAll('#container-numbers .button-number-selection');
+                const buttons = document.querySelectorAll('.button-number-selection');
                 buttons.forEach(e => {
                     e.removeAttribute('class', 'button-number-selection')
                     e.setAttribute('class', 'button-number')
@@ -168,6 +166,7 @@
 
 
                 $type.append(doc.createTextNode(`${typeGame.type}`))
+                $type.style.color=typeGame.color;
                 $text.appendChild($type)
                 $text.append(doc.createTextNode(` R$ ${typeGame.price.toFixed(2)}`))
                 $text.setAttribute('style','color:#887979dc')
@@ -205,7 +204,6 @@
                 this.clearGame()
             },
             removeAmoutGame:function removeAmoutGame(type){
-                console.log(type)
                 switch (type) {
                     case 'Mega':
                         amount-=4.5;

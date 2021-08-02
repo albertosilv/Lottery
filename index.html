@@ -14,24 +14,26 @@
 </head>
 
 <body>
-    <header class="header row justify-content-around align-items-center">
-        <div class="col-4">
+    <header class="header row justify-content-around align-items-center ">
+        <div class="col-12 col-md-4">
             <a class="text-title" href="#">TGL</a>
             <a class="text-header" href="#">Home</a>
         </div>
-        <div class="col-2">
+        <div class="col-12 col-md-2">
             <a class="text-header" href="#">Account</a>
-            <a class="text-header" href="#">Log out</a>
+            <a class="text-header" href="#">Log out<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+              </svg></a>
         </div>
     </header>
     <section class="row justify-content-around mt-5">
-        <div class="col-12 col-sm-8 game">
+        <div class="col-12 col-md-6 col-lg-8 game my-2">
             <span class="text"><strong>NEW BET</strong> MEGA-SENA</span>
             <p class="text-sub">Choose a game</span>
             <div class="button">
-                <button class="button-loto col-sm-2 col-3 my-1" id="button-facil">LotoFacil</button>
-                <button class="button-mega col-sm-2 col-4" id="button-mega">Mega-Sena</button>
-                <button class="button-mania col-sm-2 col-3" id="button-mania">Lotomania</button>
+                <button class="button-loto col-lg-2 col-md-4 col-4 my-1" id="button-facil">LotoFacil</button>
+                <button class="button-mega col-lg-2 col-md-4 col-4 col-4 my-1" id="button-mega">Mega-Sena</button>
+                <button class="button-mania col-lg-2 col-md-4 col-4  col-4 my-1" id="button-mania">Lotomania</button>
             </div>
             <p class="text-sub">Fill your bet</span>
             <p id="description"></p>
@@ -42,8 +44,8 @@
                     <button class="button-class" id="complete-game">Complete Game</button>
                     <button class="button-class" id="clear-game">Clear Game</button>
                 </div>
-                <div class="col-3">
-                    <button class="button-submit mx-2" id="submit">
+                <div class="col-4">
+                    <button class="button-submit" id="submit">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                             class="bi bi-cart" viewBox="0 0 16 16">
                             <path
@@ -53,7 +55,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-3">
+        <div class="col-12 col-md-5 col-lg-3">
             <div class="card">
                 <span class="title-card p-4"><strong>CART</strong></span>
                 <div id="cart">

@@ -5,7 +5,7 @@ body{
 }
 .header{
     border-bottom: 1px #9a9a9a94 solid;
-    height: 15%;
+    height: 12vh;
 }
 .text-title,.text-title:hover{
     color:#707070;
@@ -79,6 +79,7 @@ body{
         border-radius: 60%;
         font-weight: 800;
 }
+
 .button-number-selection{
     color: #fff;
     border: none;
@@ -159,11 +160,29 @@ body{
     font-weight: 700;
     font-style: italic;
 }
-@media(max-width: 600px) {
-    .button-number {
-      margin:5px 0px;
-    }
+@media(max-width: 700px) {
     .game{
-        margin-left: 5vw;
+        margin-left: 1vw;
+    }
+    .header{
+        border-bottom: 1px #9a9a9a94 solid;
+        height: 20vh;
+        padding:  10px;
+    }
+    .button-class{
+        margin: 5px;
+    }
+  }
+  @media(max-width: 360px) {
+    .game{
+        margin-left: 0;
+    }
+    .header{
+        border-bottom: 1px #9a9a9a94 solid;
+        height: 20vh;
+        padding:  10px;
+    }
+    .button-class{
+        margin: 5px;
     }
   }
