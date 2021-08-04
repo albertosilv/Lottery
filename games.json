@@ -26,6 +26,16 @@
       "max-number": 5,
       "color": "#F79C31",
       "min-cart-value": 30
+    },
+    {
+      "type": "Test",
+      "description": "Choose 5 numbers from the 80 available on the corner. 5, 4, 3 or 2 hits. There are six weekly draws and six chances to win.",
+      "range": 10,
+      "price": 2,
+      "max-number": 5,
+      "color": "red",
+      "min-cart-value": 30
     }
+
   ]
 }

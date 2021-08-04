@@ -40,23 +40,16 @@ body{
     letter-spacing:1px;
     font-weight: 600;
 }
-.button-loto{
-    border: #7F3992 solid 2px;
+.button-game{
     padding:5px 15px 5px 15px;
-    background-color: #fff;
     border-radius: 15px;
-    color:#7F3992;
     font-style: italic;
     margin-right: 10px;
 }
 .button-mega{
     border: #01AC66 solid 2px;
-    padding:5px 15px 5px 15px;
     background-color: #01AC66;
-    border-radius: 15px;
     color:#fff;
-    font-style: italic;
-    margin-right: 10px;
 }
 .button-mania{
     border: #F79F38 solid 2px;
@@ -159,6 +152,9 @@ body{
     font-size: 25px;
     font-weight: 700;
     font-style: italic;
+}
+.carVazio{
+    margin-left: 150px;
 }
 @media(max-width: 700px) {
     .game{
