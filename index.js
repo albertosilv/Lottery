@@ -31,7 +31,7 @@
                 return this.readyState === 4 && this.status === 200
             },
             chooseGame: function chooseGame() {
-                this.createButtons()
+                this.createButtons(true)
                 const buttonClear = doc.getElementById('clear-game')
                 const buttonComplete = doc.getElementById('complete-game')
                 const buttonAddCar = doc.getElementById('submit')
@@ -39,10 +39,10 @@
                 buttonComplete.addEventListener('click', this.completeGame)
                 buttonAddCar.addEventListener('click', this.addCar)
             },
-            createButtons: function createButtons() {
+            createButtons: function createButtons(refresh) {
                 const containerButton = doc.getElementById('buttonGames')
                 containerButton.innerHTML = ''
-                rules.forEach((element) => {
+                rules.forEach((element, index) => {
                     gamesNumber[element.type] = []
                     const button = doc.createElement('button')
                     button.setAttribute('class', 'button-game  col-lg-2 col-md-4 col-4 my-1')
@@ -50,6 +50,11 @@
                     button.setAttribute('active', 'false')
                     button.style.color = element.color;
                     button.style.backgroundColor = '#fff';
+                    if (index == 0 && refresh) {
+                        button.setAttribute('active', 'true')
+                        button.style.color = '#fff';
+                        button.style.backgroundColor = element.color;
+                    }
                     button.append(doc.createTextNode(`${element.type}`))
                     button.addEventListener('click', () => this.handleGame(element, button))
                     containerButton.appendChild(button)
@@ -101,13 +106,15 @@
                     if ($button.getAttribute('active') == 'false') {
                         if (length !== 0) {
                             gamesNumber[`${typeGame.type}`].push(String(number))
-                            $button.removeAttribute('class', 'button-number')
-                            $button.setAttribute('class', 'button-number-selection')
+                            $button.style.background = "#fff"
+                            $button.style.color = typeGame.color
+                            $button.style.border = `${typeGame.color} solid 1px`
                             $button.setAttribute('active', 'true')
                         }
                     } else {
-                        $button.removeAttribute('class', 'button-number-selection')
-                        $button.setAttribute('class', 'button-number')
+                        let index = gamesNumber[`${typeGame.type}`].indexOf(String(number));
+                        gamesNumber[`${typeGame.type}`].splice(index, 1);
+                        $button.removeAttribute('style')
                         $button.setAttribute('active', 'false')
                     }
 
@@ -116,17 +123,18 @@
                 return $button
             },
             clearGame: function clearGame() {
-                const buttons = document.querySelectorAll('.button-number-selection');
+                const buttons = document.querySelectorAll('.button-number');
                 buttons.forEach(e => {
-                    e.removeAttribute('class', 'button-number-selection')
-                    e.setAttribute('class', 'button-number')
+                    e.removeAttribute('style')
+                    e.setAttribute('active', 'false')
                 })
                 gamesNumber[typeGame.type] = []
             },
             completeGame: function completeGame() {
                 let length = typeGame['max-number'] - gamesNumber[typeGame.type].length
+                console.log(length)
                 if (length == 0) {
-                    gamesNumber[typeGame.type] = []
+                    app.clearGame()
                     length = typeGame['max-number'] - gamesNumber[typeGame.type].length
                 }
                 let cont = 0
@@ -136,10 +144,12 @@
                     if (!button) {
                         continue
                     }
-                    if (!button.classList.contains('button-number-selection')) {
+                    if (button.getAttribute('active')!='true') {
                         gamesNumber[typeGame.type].push(String(button.id))
-                        button.removeAttribute('class', 'button-number')
-                        button.setAttribute('class', 'button-number-selection')
+                        button.style.background = "#fff"
+                        button.style.color = typeGame.color
+                        button.style.border = `${typeGame.color} solid 1px`
+                        button.setAttribute('active', 'true')
                         cont++;
                     }
                     if (cont >= length) break;
@@ -201,6 +211,10 @@
                 $container.appendChild($divContainer)
 
                 const cart = doc.getElementById('cart')
+                const cartVazio = doc.getElementById('cartVazio')
+                if (cartVazio) {
+                    cartVazio.style.display = 'none'
+                }
                 cart.appendChild($container)
 
                 $button.addEventListener('click', () => this.removeCartGame($container))
@@ -211,6 +225,12 @@
                 const game = element.id.split('-')[1]
                 cart.removeChild(element);
                 this.removeAmoutGame(game)
+                let filhos = document.querySelectorAll('.cart > *')
+                if (filhos.length == 0) {
+                    const cartVazio = doc.getElementById('cartVazio')
+                    cartVazio.style.display = 'flex'
+                }
+
             },
             createAmoutComponente: function createAmoutComponente() {
                 const amountComponente = doc.getElementById('amount')
