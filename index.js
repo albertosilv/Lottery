@@ -24,7 +24,7 @@
                 if (!app.isReady.call(this)) return;
                 rules = JSON.parse(this.responseText).types;
                 app.chooseGame()
-                typeGame=rules[0]
+                typeGame = rules[0]
                 app.generateNumbers()
             },
             isReady: function isReady() {
@@ -56,7 +56,7 @@
                 })
             },
             handleGame: function handleGame(gameActive, element) {
-                typeGame=gameActive
+                typeGame = gameActive
                 const backgroundColor = element.style.backgroundColor
                 const color = element.style.color
                 element.style.color = backgroundColor;
@@ -94,21 +94,23 @@
                 const $button = doc.createElement('button')
                 const $text = doc.createTextNode(number)
                 $button.setAttribute('class', 'button-number')
-                $button.setAttribute('active','false')
+                $button.setAttribute('active', 'false')
                 $button.setAttribute('id', number)
                 $button.addEventListener('click', () => {
                     const length = typeGame['max-number'] - gamesNumber[typeGame.type].length
-                    if($button.getAttribute('active')=='false'){
+                    if ($button.getAttribute('active') == 'false') {
                         if (length !== 0) {
                             gamesNumber[`${typeGame.type}`].push(String(number))
                             $button.removeAttribute('class', 'button-number')
                             $button.setAttribute('class', 'button-number-selection')
-                            $button.setAttribute('active','true')
+                            $button.setAttribute('active', 'true')
                         }
-                    }else{
-
+                    } else {
+                        $button.removeAttribute('class', 'button-number-selection')
+                        $button.setAttribute('class', 'button-number')
+                        $button.setAttribute('active', 'false')
                     }
-                    
+
                 })
                 $button.append($text)
                 return $button
@@ -123,8 +125,8 @@
             },
             completeGame: function completeGame() {
                 let length = typeGame['max-number'] - gamesNumber[typeGame.type].length
-                if(length==0){
-                    gamesNumber[typeGame.type]=[]
+                if (length == 0) {
+                    gamesNumber[typeGame.type] = []
                     length = typeGame['max-number'] - gamesNumber[typeGame.type].length
                 }
                 let cont = 0
@@ -222,11 +224,11 @@
                 this.clearGame()
             },
             removeAmoutGame: function removeAmoutGame(type) {
-                const remove = rules.filter(e=>{
-                    return type==e.type
+                const remove = rules.filter(e => {
+                    return type == e.type
                 })
                 console.log(remove)
-                amount-=remove[0].price
+                amount -= remove[0].price
                 this.createAmoutComponente()
             }
         }
